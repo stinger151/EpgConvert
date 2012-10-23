@@ -3,3 +3,8 @@ c:\users\francesco\documents\visual studio 2010\Projects\EpgConvert\EpgConvert\b
 c:\users\francesco\documents\visual studio 2010\Projects\EpgConvert\EpgConvert\obj\x86\Debug\ResolveAssemblyReference.cache
 c:\users\francesco\documents\visual studio 2010\Projects\EpgConvert\EpgConvert\obj\x86\Debug\EpgConvert.exe
 c:\users\francesco\documents\visual studio 2010\Projects\EpgConvert\EpgConvert\obj\x86\Debug\EpgConvert.pdb
+C:\Users\francesco\Documents\GitHub\EpgConvert\EpgConvert\obj\x86\Debug\EpgConvert.exe
+C:\Users\francesco\Documents\GitHub\EpgConvert\EpgConvert\obj\x86\Debug\EpgConvert.pdb
+C:\Users\francesco\Documents\GitHub\EpgConvert\EpgConvert\bin\Debug\EpgConvert.exe
+C:\Users\francesco\Documents\GitHub\EpgConvert\EpgConvert\bin\Debug\EpgConvert.pdb
+C:\Users\francesco\Documents\GitHub\EpgConvert\EpgConvert\obj\x86\Debug\ResolveAssemblyReference.cache
