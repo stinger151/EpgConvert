@@ -23,7 +23,7 @@ namespace EpgConvert
         private string _genre;
         public string genre
         {
-            get { return _genre; }
+            get { return this.getCategory(); }
             set { _genre = value; }
         }
 
@@ -54,7 +54,7 @@ namespace EpgConvert
             get { return _stop; }
         }
 
-        public string getCategory()
+        private string getCategory()
         {
             DataTable matchingTable = new DataTable();
             matchingTable.Columns.Add("xmltvCatagory", typeof(string));
@@ -317,7 +317,7 @@ namespace EpgConvert
                     //TODO: mögliche system argument exception abfangen
 
 
-                    myRoot.AppendChild(createProgram(doc, _tmpurl, frame.start.ToString("yyyyMMddHHmmss") + " +0100", frame.stop.ToString("yyyyMMddHHmmss") + " +0100", frame.title.ToString(), frame.desc, frame.getCategory()));
+                    myRoot.AppendChild(createProgram(doc, _tmpurl, frame.start.ToString("yyyyMMddHHmmss") + " +0100", frame.stop.ToString("yyyyMMddHHmmss") + " +0100", frame.title.ToString(), frame.desc, frame.genre));
 
                 }
                 //TODO: möglicher fehler beim Speichern falls Pfad nicht vorhanden oder keine Berechtigung
