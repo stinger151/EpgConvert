@@ -164,9 +164,10 @@ namespace EpgConvert
                 string pathtoepg = "";
                 string pathtoxmltv = "";
                 string vdrUNDPort = "";
-                if (args.Length != 3)
+                string timeshift = "";
+                if (args.Length != 4)
                 {
-                    Console.WriteLine(@".exe path\epg.data path\xmltv.xml ip:port (ip:port wie in channels.m3u");
+                    Console.WriteLine(@".exe path\epg.data path\xmltv.xml +0200 ip:port (ip:port wie in channels.m3u");
                     return;
                 }
                 else
@@ -179,12 +180,13 @@ namespace EpgConvert
 
                     pathtoepg = args[0];
                     pathtoxmltv = args[1];
-                    vdrUNDPort = args[2];
+                    timeshift = args[2];
+                    vdrUNDPort = args[3];
 
                 }
                 List<epgDataFrame> EPGDATA = ParseVDRepg(pathtoepg, vdrUNDPort);
 
-                CreateXMLTV(EPGDATA, pathtoxmltv);
+                CreateXMLTV(EPGDATA, pathtoxmltv, timeshift);
             }
             //catch (Exception e)
             //{
@@ -278,7 +280,7 @@ namespace EpgConvert
         }
 
 
-        public static void CreateXMLTV(List<epgDataFrame> goodFrames, string pathxmltv)
+        public static void CreateXMLTV(List<epgDataFrame> goodFrames, string pathxmltv, string timeshift)
         {
             //try
             {
@@ -293,12 +295,12 @@ namespace EpgConvert
                 doc.AppendChild(myRoot);
 
                 myAttribute = doc.CreateAttribute("date");
-                myAttribute.InnerText = " +0100";
+                myAttribute.InnerText = " " + timeshift;
 
                 myRoot.Attributes.Append(myAttribute);
 
                 myAttribute = doc.CreateAttribute("generator-info-name");
-                myAttribute.InnerText = "ce";
+               // myAttribute.InnerText = "ce";
 
                 myRoot.Attributes.Append(myAttribute);
                 // -----Tv Ende---
@@ -317,7 +319,7 @@ namespace EpgConvert
                     //TODO: mögliche system argument exception abfangen
 
 
-                    myRoot.AppendChild(createProgram(doc, _tmpurl, frame.start.ToString("yyyyMMddHHmmss") + " +0100", frame.stop.ToString("yyyyMMddHHmmss") + " +0100", frame.title.ToString(), frame.desc, frame.genre));
+                    myRoot.AppendChild(createProgram(doc, _tmpurl, frame.start.ToString("yyyyMMddHHmmss") + " "+timeshift, frame.stop.ToString("yyyyMMddHHmmss") + " "+timeshift, frame.title.ToString(), frame.desc, frame.genre));
 
                 }
                 //TODO: möglicher fehler beim Speichern falls Pfad nicht vorhanden oder keine Berechtigung
